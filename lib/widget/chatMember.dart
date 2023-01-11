@@ -3,15 +3,14 @@ import 'package:messaging_app/widget/messageBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
+  final DeviceScreenType? deviceScreenType;
+  const MyStatefulWidget({super.key, this.deviceScreenType});
 
   @override
   State<MyStatefulWidget> createState() => ChatMember();
 }
 
 class ChatMember extends State<MyStatefulWidget> {
-  final DeviceScreenType? deviceScreenType;
-  const ChatMember({Key? key, this.deviceScreenType}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     bool _customTileExpanded = false;
@@ -164,15 +163,15 @@ class ChatMember extends State<MyStatefulWidget> {
                       ),
                     ),
                     SizedBox(height: 30),
-                    Column(
-                      children: List.generate(
-                        members.length,
-                        (index) => MemberCard(
-                          member: members[index],
-                          deviceScreenType: deviceScreenType,
-                        ),
-                      ),
-                    ),
+Column(
+  children: List.generate(
+    members.length,
+    (index) => MemberCard(
+      member: members[index],
+      deviceScreenType: widget.deviceScreenType,
+    ),
+  ),
+),
                   ],
                 ),
               ),
