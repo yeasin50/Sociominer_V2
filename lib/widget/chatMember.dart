@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:messaging_app/widget/messageBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class ChatMember extends StatelessWidget {
-  final DeviceScreenType? deviceScreenType;
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+  @override
+  State<MyStatefulWidget> createState() => ChatMember();
+}
 
-  const ChatMember({Key? key, this.deviceScreenType}) : super(key: key);
+class ChatMember extends State<MyStatefulWidget> {
+  final DeviceScreenType? deviceScreenType;
+  const ChatMember({key, this.deviceScreenType}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    bool _customTileExpanded = false;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
       child: Column(
@@ -17,6 +24,55 @@ class ChatMember extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    ExpansionTile(
+                      title: Text(
+                        "Chats",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19,
+                        ),
+                      ),
+                      trailing: Icon(
+                        _customTileExpanded
+                            ? Icons.filter_alt_outlined
+                            : Icons.filter_alt_rounded,
+                      ),
+                      onExpansionChanged: (bool expanded) {
+                        //setState(() => _customTileExpanded = expanded);
+                      },
+                      children: [
+                        Spacer(),
+                        IconButton(icon: Icon(Icons.search), onPressed: () {}),
+                        SizedBox(width: 20),
+                        IconButton(
+                          icon: Icon(
+                            Icons.filter_list,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) => Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.5,
+                                decoration: new BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: new BorderRadius.only(
+                                    topLeft: const Radius.circular(25.0),
+                                    topRight: const Radius.circular(25.0),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text("Modal content goes here"),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                     Row(
                       children: [
                         Text(
@@ -39,48 +95,73 @@ class ChatMember extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: Colors.blue.withOpacity(.1),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.blue.withOpacity(.1),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Text("Open",
+                                style: TextStyle(color: Colors.blue)),
                           ),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Text("Open",
-                              style: TextStyle(color: Colors.blue)),
-                        ),
-                        SizedBox(width: 20),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: Colors.blue.withOpacity(.1),
+                          SizedBox(width: 20),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.blue.withOpacity(.1),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Text("Open",
+                                style: TextStyle(color: Colors.blue)),
                           ),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Text(
-                            "Done",
-                            style: TextStyle(color: Colors.blue),
+                          SizedBox(width: 20),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.blue.withOpacity(.1),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Text("Open",
+                                style: TextStyle(color: Colors.blue)),
                           ),
-                        ),
-                        SizedBox(width: 20),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            border: Border.all(
-                                color: Theme.of(context).iconTheme.color!,
-                                width: .5),
+                          SizedBox(width: 20),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.blue.withOpacity(.1),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Text(
+                              "Done",
+                              style: TextStyle(color: Colors.blue),
+                            ),
                           ),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Text(
-                            "Open",
-                            style: TextStyle(
-                                color: Theme.of(context).iconTheme.color),
+                          SizedBox(width: 20),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              border: Border.all(
+                                  color: Theme.of(context).iconTheme.color!,
+                                  width: .5),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Text(
+                              "Open",
+                              style: TextStyle(
+                                  color: Theme.of(context).iconTheme.color),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(height: 30),
                     Column(
