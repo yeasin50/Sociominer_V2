@@ -4,14 +4,14 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({super.key});
+
   @override
   State<MyStatefulWidget> createState() => ChatMember();
 }
 
 class ChatMember extends State<MyStatefulWidget> {
   final DeviceScreenType? deviceScreenType;
-  const ChatMember({key, this.deviceScreenType}) : super(key: key);
-
+  const ChatMember({Key? key, this.deviceScreenType}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     bool _customTileExpanded = false;
