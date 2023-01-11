@@ -38,7 +38,7 @@ class ChatMember extends State<MyStatefulWidget> {
                             : Icons.filter_alt_rounded,
                       ),
                       onExpansionChanged: (bool expanded) {
-                        //setState(() => _customTileExpanded = expanded);
+                        setState(() => _customTileExpanded = expanded);
                       },
                       children: [
                         Spacer(),
