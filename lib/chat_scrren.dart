@@ -41,7 +41,8 @@ class ChatBody extends StatelessWidget {
                       children: [
                         Container(
                           width: 400,
-                          child: ChatMember(deviceScreenType: deviceScreenType),
+                          child: MyStatefulWidget(
+                              deviceScreenType: deviceScreenType),
                         ),
                         CustomDivider(),
                         Expanded(child: MessageBox()),
@@ -72,7 +73,7 @@ class ChatBody extends StatelessWidget {
                   ),
                   Divider(),
                   Expanded(
-                    child: ChatMember(deviceScreenType: deviceScreenType),
+                    child: MyStatefulWidget(deviceScreenType: deviceScreenType),
                   ),
                 ],
               ),
@@ -86,7 +87,7 @@ class ChatBody extends StatelessWidget {
               openDrawer: openDrawer,
             ),
             Expanded(
-              child: ChatMember(
+              child: MyStatefulWidget(
                 deviceScreenType: deviceScreenType,
               ),
             ),
