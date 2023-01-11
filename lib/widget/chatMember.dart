@@ -3,9 +3,9 @@ import 'package:messaging_app/widget/messageBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ChatMember extends StatelessWidget {
-  final DeviceScreenType deviceScreenType;
+  final DeviceScreenType? deviceScreenType;
 
-  const ChatMember({Key key, this.deviceScreenType}) : super(key: key);
+  const ChatMember({Key? key, this.deviceScreenType}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,7 +69,7 @@ class ChatMember extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7),
                             border: Border.all(
-                                color: Theme.of(context).iconTheme.color,
+                                color: Theme.of(context).iconTheme.color!,
                                 width: .5),
                           ),
                           padding: EdgeInsets.symmetric(
@@ -115,13 +115,13 @@ class ChatMember extends StatelessWidget {
 }
 
 class MemberCard extends StatelessWidget {
-  final Member member;
+  final Member? member;
   final bool showJob;
-  final Widget trailing;
-  final DeviceScreenType deviceScreenType;
+  final Widget? trailing;
+  final DeviceScreenType? deviceScreenType;
 
   const MemberCard(
-      {Key key,
+      {Key? key,
       this.deviceScreenType,
       this.showJob = false,
       this.member,
@@ -163,7 +163,7 @@ class MemberCard extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(bottom: 8),
           child: Text(
-            member.title,
+            member!.title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -176,12 +176,12 @@ class MemberCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(member.image),
+              image: NetworkImage(member!.image),
             ),
           ),
         ),
         trailing: trailing ?? Text("2h"),
-        subtitle: showJob ? Text(member.job) : Text(member.lastMessage),
+        subtitle: showJob ? Text(member!.job) : Text(member!.lastMessage),
       ),
     );
   }

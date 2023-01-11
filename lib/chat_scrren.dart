@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:messaging_app/color.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'widget/widget.dart';
@@ -13,7 +12,7 @@ class ChatBody extends StatelessWidget {
     final scaffoldKey = GlobalKey<ScaffoldState>();
 
     openDrawer() {
-      scaffoldKey.currentState.openDrawer();
+      scaffoldKey.currentState!.openDrawer();
     }
 
     return Scaffold(
@@ -34,7 +33,7 @@ class ChatBody extends StatelessWidget {
                 children: [
                   Header(
                     deviceScreenType: deviceScreenType,
-                     openDrawer: openDrawer,
+                    openDrawer: openDrawer,
                   ),
                   Divider(),
                   Expanded(
@@ -69,7 +68,7 @@ class ChatBody extends StatelessWidget {
                 children: [
                   Header(
                     deviceScreenType: deviceScreenType,
-                     openDrawer: openDrawer,
+                    openDrawer: openDrawer,
                   ),
                   Divider(),
                   Expanded(

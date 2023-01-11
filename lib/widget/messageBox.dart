@@ -131,7 +131,7 @@ class MessageBox extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: isSend ? KColor.primaryColor : Colors.grey[300].withOpacity(.4),
+        color: isSend ? KColor.primaryColor : Colors.grey[300]!.withOpacity(.4),
         borderRadius: BorderRadius.circular(20),
       ),
       padding: EdgeInsets.symmetric(

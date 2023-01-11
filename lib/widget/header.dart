@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Header extends StatelessWidget {
-  final DeviceScreenType deviceScreenType;
-  final Function openDrawer;
+  final DeviceScreenType? deviceScreenType;
+  final Function? openDrawer;
 
-  const Header({Key key, this.deviceScreenType, this.openDrawer})
+  const Header({Key? key, this.deviceScreenType, this.openDrawer})
       : super(key: key);
 
   @override
@@ -22,7 +22,7 @@ class Header extends StatelessWidget {
                 if (deviceScreenType == DeviceScreenType.mobile)
                   IconButton(
                     icon: Icon(Icons.menu),
-                    onPressed: () => openDrawer(),
+                    onPressed: () => openDrawer!(),
                   ),
                 SizedBox(width: 20),
                 Icon(
